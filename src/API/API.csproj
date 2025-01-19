@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\athletic.Application\athletic.Application.csproj" />
-    <ProjectReference Include="..\athletic.CrossCutting\athletic.CrossCutting.csproj" />
+    <ProjectReference Include="..\application\application.csproj" />
+    <ProjectReference Include="..\Ioc\Ioc.csproj" />
   </ItemGroup>
 
   <ItemGroup>

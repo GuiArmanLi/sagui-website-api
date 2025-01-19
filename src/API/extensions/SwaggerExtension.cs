@@ -1,6 +1,6 @@
 using Microsoft.OpenApi.Models;
 
-namespace athletic.WebAPI.extensions;
+namespace API.extensions;
 
 public static class SwaggerExtension
 {
@@ -11,7 +11,7 @@ public static class SwaggerExtension
             options.SwaggerDoc("v1",
                 new OpenApiInfo
                 {
-                    Title = "athletic API",
+                    Title = "API",
                     Version = "v1",
                     Description = "API to manage an app in angular",
                     Contact = new OpenApiContact

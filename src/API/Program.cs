@@ -1,4 +1,4 @@
-using athletic.WebAPI.extensions;
+using API.extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

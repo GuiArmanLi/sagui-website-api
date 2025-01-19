@@ -5,17 +5,17 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1BF43FAF-CFFF-4CBD-9DBA-DB711C4CB320}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "athletic.Application", "src\athletic.Application\athletic.Application.csproj", "{4A9DCB13-55D7-41DF-8EB9-2D31557239F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "application", "src\application\application.csproj", "{4A9DCB13-55D7-41DF-8EB9-2D31557239F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "athletic.CrossCutting", "src\athletic.CrossCutting\athletic.CrossCutting.csproj", "{7D0F1A61-0B3B-4E91-884E-F92A97B0F67B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoC", "src\IoC\IoC.csproj", "{7D0F1A61-0B3B-4E91-884E-F92A97B0F67B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "athletic.Domain", "src\athletic.Domain\athletic.Domain.csproj", "{CD48F4FD-CCCB-47AD-BE1E-21549A83A35D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domain", "src\domain\domain.csproj", "{CD48F4FD-CCCB-47AD-BE1E-21549A83A35D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "athletic.Infrastructure", "src\athletic.Infrastructure\athletic.Infrastructure.csproj", "{E1D0D457-08F3-4ABF-8E8D-47A15003339E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "infrastructure", "src\infrastructure\infrastructure.csproj", "{E1D0D457-08F3-4ABF-8E8D-47A15003339E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "athletic.Tests", "src\athletic.Tests\athletic.Tests.csproj", "{F07D055C-C788-4155-91FF-C895F29FDF18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "src\tests\tests.csproj", "{F07D055C-C788-4155-91FF-C895F29FDF18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "athletic.WebAPI", "src\athletic.WebAPI\athletic.WebAPI.csproj", "{00E63BAA-C820-44E2-930D-6278DA04E60F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "src\API\API.csproj", "{00E63BAA-C820-44E2-930D-6278DA04E60F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
