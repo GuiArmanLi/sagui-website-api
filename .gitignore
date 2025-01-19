@@ -1,0 +1,39 @@
+# Ignorar diretórios do IntelliJ IDEA
+.idea/
+
+# Ignorar diretórios de build e compilação
+**/obj/
+**/bin/
+**/Debug/
+**/Release/
+
+# Ignorar logs, pacotes e arquivos de ambiente
+*.log
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+
+# Ignorar arquivos e diretórios específicos de .NET
+**/App_Data/
+**/appsettings*.json
+**/packages/
+**/*.csproj.user
+**/*.suo
+**/*.userosscache
+**/*.sln.docstates
+**/Generated_Code/
+
+# Ignorar configurações de IDE e editor de código
+.vscode/
+.vscode/*
+*.code-workspace
+
+# Ignorar arquivos de saída da publicação
+publish/
+publish/
+
+# Ignorar pastas específicas do projeto
+**/bin/
+**/obj/
