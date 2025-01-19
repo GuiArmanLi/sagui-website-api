@@ -8,31 +8,31 @@ public class UserController
     public UserController(IUserService service) => _service = service;
 
     [HttpGet]
-    public List<UserReadDto> ReadAllUsers()
+    public IActionResult ReadAllUsers()
     {
         return _service.ReadAllUsers();
     }
 
     [HttpGet("/{id:Guid}")]
-    public UserReadDto ReadUsersById([FromRoute] Guid id)
+    public IActionResult ReadUsersById([FromRoute] Guid id)
     {
         return _service.ReadUsersById(id);
     }
 
     [HttpPost]
-    public UserCreateDto CreateUser([FromBody] UserCreateDto dto)
+    public IActionResult CreateUser([FromBody] UserCreateDto dto)
     {
         return _service.CreateUser(dto);
     }
 
     [HttpPut("{id:Guid}")]
-    public UserCreateDto UpdateUser([FromRoute] Guid id, [FromBody] UserCreateDto dto)
+    public IActionResult UpdateUser([FromRoute] Guid id, [FromBody] UserUpdateDto dto)
     {
         return _service.UpdateUser(id, dto);
     }
 
     [HttpDelete("{id:Guid}")]
-    public UserReadDto DeleteUser([FromRoute] Guid id)
+    public IActionResult DeleteUser([FromRoute] Guid id)
     {
         return _service.DeleteUser(id);
     }
