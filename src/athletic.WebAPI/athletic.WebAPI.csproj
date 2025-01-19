@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\athletic.Domain\athletic.Domain.csproj" />
+    <ProjectReference Include="..\athletic.Application\athletic.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
