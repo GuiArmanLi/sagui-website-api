@@ -1,32 +1,39 @@
-using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+
+using Microsoft.EntityFrameworkCore;
 
 public class UserService : IUserService
 {
-    private static List<User> _users = new List<User>();
+    private AppDbContext _context;
 
-    public IActionResult ReadAllUsers()
+    public UserService(AppDbContext context)
     {
-        var response = _users.Select(user => (UserReadDto)user).ToList();
-
-        return new CustomResponse(HttpStatusCode.Accepted, response);
+        _context = context;
     }
 
-    public IActionResult ReadUsersById(Guid id)
+    public async Task<IActionResult> ReadAllUsers()
     {
-        var user = _users.FirstOrDefault(user => user.Id == id);
+        var users = await _context.Users.Select(user => (UserReadDto)user).ToListAsync();
+
+        return new CustomResponse(HttpStatusCode.Accepted, users);
+    }
+
+    public async Task<IActionResult> ReadUsersById(Guid id)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(user => user.Id == id);
         if (user == null)
             return new CustomResponse(HttpStatusCode.BadRequest, $"User with {id} not found");
 
         return new CustomResponse(HttpStatusCode.Accepted, (UserReadDto)user);
     }
 
-    public IActionResult CreateUser(UserCreateDto request)
+    public async Task<IActionResult> CreateUser(UserCreateDto request)
     {
         if (request == null)
             return new CustomResponse(HttpStatusCode.BadRequest, "Request is null");
 
-        var user = _users.FirstOrDefault(
+        var user = await _context.Users.FirstOrDefaultAsync(
             user => user.Username == request.Username
             || user.Email == request.Email);
 
@@ -36,16 +43,20 @@ public class UserService : IUserService
                 $"Already exist an user with Username {request.Username} or Email {request.Email}"
             );
 
-        _users.Add(request);
+        var userRequest = (User)request;
+
+        await _context.AddAsync(userRequest);
+        await _context.SaveChangesAsync();
+
         return new CustomResponse(HttpStatusCode.Created, request); //Retornar DTO
     }
 
-    public IActionResult UpdateUser(Guid id, UserUpdateDto request)
+    public async Task<IActionResult> UpdateUser(Guid id, UserUpdateDto request)
     {
         if (request == null)
             return new CustomResponse(HttpStatusCode.BadRequest, "Request is null");
 
-        var currentUser = _users.FirstOrDefault(user => user.Id == id);
+        var currentUser = await _context.Users.FirstOrDefaultAsync(user => user.Id == id);
         if (currentUser == null)
             return new CustomResponse(HttpStatusCode.BadRequest, $"User with {id} not found");
 
@@ -54,13 +65,14 @@ public class UserService : IUserService
         return new CustomResponse(HttpStatusCode.Accepted, (UserReadDto)currentUser);
     }
 
-    public IActionResult DeleteUser(Guid id)
+    public async Task<IActionResult> DeleteUser(Guid id)
     {
-        var user = _users.Find(user => user.Id == id);
+        var user = await _context.Users.FirstOrDefaultAsync(user => user.Id == id);
         if (user == null)
             return new CustomResponse(HttpStatusCode.BadRequest, $"There os not any user with id {id}");
 
-        _users.Remove(user);
+        _context.Users.Remove(user);
+        await _context.SaveChangesAsync();
 
         return new CustomResponse(HttpStatusCode.Accepted, (UserReadDto)user);
     }

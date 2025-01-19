@@ -6,7 +6,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerExtension();
 builder.Services.AddControllers();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
-builder.Services.AddDependencies();
+
+builder.Services.AddDependencyInjectionExtension();
+builder.Services.AddEntityFramework();
 
 var app = builder.Build();
 

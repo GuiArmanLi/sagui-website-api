@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoC", "src\IoC\IoC.csproj",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domain", "src\domain\domain.csproj", "{CD48F4FD-CCCB-47AD-BE1E-21549A83A35D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "infrastructure", "src\infrastructure\infrastructure.csproj", "{E1D0D457-08F3-4ABF-8E8D-47A15003339E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data", "src\data\data.csproj", "{E1D0D457-08F3-4ABF-8E8D-47A15003339E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "src\tests\tests.csproj", "{F07D055C-C788-4155-91FF-C895F29FDF18}"
 EndProject
