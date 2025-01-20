@@ -2,6 +2,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\domain\domain.csproj" />
+    <ProjectReference Include="..\data\data.csproj" />
+
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10" />
+    
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <PropertyGroup>

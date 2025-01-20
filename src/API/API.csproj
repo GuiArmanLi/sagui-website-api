@@ -8,18 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-  </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\application\application.csproj" />
     <ProjectReference Include="..\Ioc\Ioc.csproj" />
-  </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <Folder Include="controllers\v1\" />
   </ItemGroup>
-
 </Project>
