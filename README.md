@@ -30,6 +30,19 @@ Bem-vindo ao Projeto Sagui! Este é um site colaborativo desenvolvido principalm
 - **Git**: Sistema de controle de versão distribuído.
 - **GitHub Actions**: Plataforma de integração contínua e entrega contínua (CI/CD).
 
+# Contribuições
+
+Contribuições para este projeto são bem-vindas!
+Usuários interessados ​​podem consultar as diretrizes fornecidas no arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para contribuir com o projeto e ajudar a melhorar sua funcionalidade e recursos.
+
+# Licença
+
+Este projeto é licenciado sob a [licença MIT](LICENSE), fornecendo aos usuários flexibilidade e liberdade para usar e modificar o software de acordo com suas necessidades.
+
+# Isenção de responsabilidade
+
+Os usuários são aconselhados a revisar a licença que o acompanha para obter mais informações sobre os termos de uso e limitações de responsabilidade.
+
 ## Contato
 
 Para mais informações ou dúvidas, entre em contato conosco através da página de contatos no site.
