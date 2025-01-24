@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 
-public class AppDbContext : DbContext
+public class DataContext : DbContext
 {
     public DbSet<User> Users { get; set; }
 
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
+    public DataContext(DbContextOptions<DataContext> options) : base(options) {}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

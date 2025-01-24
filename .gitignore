@@ -37,3 +37,4 @@ publish/
 # Ignorar pastas específicas do projeto
 **/bin/
 **/obj/
+appsettings.json

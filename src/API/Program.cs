@@ -8,7 +8,8 @@ builder.Services.AddControllers();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 builder.Services.AddDependencyInjectionExtension();
-builder.Services.AddEntityFramework();
+builder.Services.AddEntityFramework(builder.Configuration);
+
 
 var app = builder.Build();
 

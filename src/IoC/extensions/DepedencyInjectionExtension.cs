@@ -7,6 +7,8 @@ public static class DepedencyInjectionExtension
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserService, UserService>();
 
+        services.AddScoped<IIdentityService, IdentityService>();
+
         return services;
     }
 }
