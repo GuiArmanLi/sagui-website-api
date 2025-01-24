@@ -1,25 +1,23 @@
 
 using Microsoft.EntityFrameworkCore;
 
-public class UserRepository(AppDbContext context) : IUserRepository
+public class UserRepository(DataContext context) : IUserRepository
 {
-    private AppDbContext _context = context;
+    private DataContext _context = context;
 
     public async Task<List<User>> ReadAllUsers()
     {
         return await _context.Users.ToListAsync();
     }
 
-    public async Task<User> ReadUsersById(Guid id)
+    public async Task<User> ReadUserById(Guid id)
     {
         return (await _context.Users.FirstOrDefaultAsync(user => user.Id == id))!;
     }
 
-    public async Task<User> ReadUsersByUniqueAttributes(User request)
+    public async Task<User> ReadUserByEmail(string email)
     {
-        return (await _context.Users.FirstOrDefaultAsync(
-            user => user.Username == request.Username
-            || user.Email == request.Email))!;
+        return (await _context.Users.FirstOrDefaultAsync(user => user.Email == email))!;
     }
 
     public async Task<User> CreateUser(User user)

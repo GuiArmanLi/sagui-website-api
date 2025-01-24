@@ -1,6 +1,5 @@
-public class User
+public class User : Entity
 {
-    public Guid Id { get; set; }
     public string Name { get; set; }
     public string Username { get; set; }
     public string Password { get; set; }
@@ -10,13 +9,21 @@ public class User
     public DateTime UpdatedAt { get; set; }
     public bool IsActive { get; set; }
 
-    public User(string name,
+    public User(string email, string password)
+    {
+        Email = email;
+        Password = password;
+    }
+
+    public User(
+        Guid id,
+        string name,
         string username,
         string password,
         string email,
         DateTime dateOfBirth)
     {
-        Id = Guid.NewGuid();
+        Id = id;
         Name = name;
         Username = username;
         Password = password;

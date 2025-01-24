@@ -20,15 +20,19 @@ public class UserController
     }
 
     [HttpPost]
-    public IActionResult CreateUser([FromBody] UserCreateDto dto)
+    public IActionResult CreateUser([FromBody] UserCreateRequest request)
     {
-        return _service.CreateUser(dto);
+        return _service.CreateUser(request);
+    }
+
+    public IActionResult LoginUser([FromBody] UserLoginRequest request){
+        return _service.LoginUser(request);
     }
 
     [HttpPut("{id:Guid}")]
-    public IActionResult UpdateUser([FromRoute] Guid id, [FromBody] UserUpdateDto dto)
+    public IActionResult UpdateUser([FromRoute] Guid id, [FromBody] UserUpdateRequest request)
     {
-        return _service.UpdateUser(id, dto);
+        return _service.UpdateUser(id, request);
     }
 
     [HttpDelete("{id:Guid}")]

@@ -7,59 +7,68 @@ public class UserService(IUserRepository repository) : IUserService
 
     public IActionResult ReadAllUsers()
     {
-        var users = _repository.ReadAllUsers().Result.Select(user => (UserReadDto)user);
+        var users = _repository.ReadAllUsers().Result.Select(UserResponse.ConvertToUserResponse);
 
         return new CustomResponse(HttpStatusCode.Accepted, users);
     }
 
     public IActionResult ReadUsersById(Guid id)
     {
-        var user = (UserReadDto)_repository.ReadUsersById(id).Result;
+        var user = UserResponse.ConvertToUserResponse(
+            _repository.ReadUserById(id).Result
+            );
         if (user == null)
             return new CustomResponse(HttpStatusCode.BadRequest, $"User with {id} not found");
 
         return new CustomResponse(HttpStatusCode.Accepted, user);
     }
 
-    public IActionResult CreateUser(UserCreateDto request)
+    public IActionResult CreateUser(UserCreateRequest request)
     {
         if (request == null)
             return new CustomResponse(HttpStatusCode.BadRequest, "Request is null");
 
-        var user = _repository.ReadUsersByUniqueAttributes(request).Result;
+        var user = _repository.ReadUserByEmail(request.Email).Result;
         if (user != null)
-            return new CustomResponse(HttpStatusCode.BadRequest,
-                $"Already exist an user with Username {request.Username} or Email {request.Email}");
+            return new CustomResponse(HttpStatusCode.BadRequest, $"Already exist an user with Email {request.Email}");
 
-        _repository.CreateUser(request);
+        user = UserCreateRequest.ConvertToEntity(request);
+        _repository.CreateUser(user);
 
-        var response = (UserReadDto)(User)request;
-        return new CustomResponse(HttpStatusCode.Created, response);
+
+        return new CustomResponse(HttpStatusCode.Created, user);
     }
 
-    public IActionResult UpdateUser(Guid id, UserUpdateDto request)
+    [HttpPost("login")]
+    public IActionResult LoginUser(UserLoginRequest request)
+    {
+        return null;
+    }
+
+    public IActionResult UpdateUser(Guid id, UserUpdateRequest request)
     {
         if (request == null)
             return new CustomResponse(HttpStatusCode.BadRequest, "Request is null");
 
-        var current = _repository.ReadUsersById(id).Result;
+        var current = _repository.ReadUserById(id).Result;
         if (current == null)
             return new CustomResponse(HttpStatusCode.BadRequest, $"User with {id} not found");
 
-        var user = (UserReadDto)_repository.UpdateUser(current, request).Result;
+        var user = UserResponse.ConvertToUserResponse(
+            _repository.UpdateUser(current, UserUpdateRequest.ConvertToEntity(request)).Result
+        );
         return new CustomResponse(HttpStatusCode.Accepted, user);
     }
 
     public IActionResult DeleteUser(Guid id)
     {
-        var user = _repository.ReadUsersById(id).Result;
+        var user = _repository.ReadUserById(id).Result;
         if (user == null)
             return new CustomResponse(HttpStatusCode.BadRequest, $"There os not any user with id {id}");
 
         _repository.DeleteUser(user);
 
-        var response = (UserReadDto)user;
-
+        var response = UserResponse.ConvertToUserResponse(user);
         return new CustomResponse(HttpStatusCode.Accepted, response);
     }
 

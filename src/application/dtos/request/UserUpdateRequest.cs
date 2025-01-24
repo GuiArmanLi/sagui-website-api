@@ -1,4 +1,5 @@
-public record UserCreateDto(
+public record UserUpdateRequest(
+    Guid id,
     string Name,
     string Username,
     string Password,
@@ -6,7 +7,8 @@ public record UserCreateDto(
     DateTime DateOfBirth
 )
 {
-    public static implicit operator User(UserCreateDto dto) => new User(
+    public static User ConvertToEntity(UserUpdateRequest dto) => new User(
+        dto.id,
         dto.Name,
         dto.Username,
         dto.Password,
