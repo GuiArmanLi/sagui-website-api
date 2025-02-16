@@ -1,11 +1,11 @@
-public class UserCreateResponse
+public class UserSignUpResponse
 {
     public bool Success { get; private set; }
     public List<string> Errors { get; private set; }
 
-    public UserCreateResponse(bool sucess = true) : this() => Success = sucess;
+    public UserSignUpResponse(bool sucess = true) : this() => Success = sucess;
 
-    public UserCreateResponse() =>
+    public UserSignUpResponse() =>
         Errors = new List<string>();
 
     public void AddErros(IEnumerable<string> errors) =>
